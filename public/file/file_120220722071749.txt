@@ -1,0 +1,15 @@
+nambah foto profil - undone
+mengupdate postingan - undone
+mengupdate komentar - undone
+
+=========
+login - done
+logout - done
+mengatur bio - done
+Beranda (tampil all postingan) - done
+filter postingan by hastag - done
+filter komentar by hastag - done
+menghapus komentar - done
+menghapus postingan - done
+buat postingan - done
+membuat komentar - done

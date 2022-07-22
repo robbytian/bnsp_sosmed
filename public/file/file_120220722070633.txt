@@ -1,0 +1,3 @@
+emonev.bappeda.ciamiskab.go.id
+login : admin
+password : ayam

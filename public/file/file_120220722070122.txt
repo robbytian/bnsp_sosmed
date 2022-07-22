@@ -1,0 +1,37 @@
+Registrasi:
+
+-Nama
+-NIP
+-Email
+-Jabatan (diatur berdasarkan role)
+-Bidang
+
+
+Tabel Program : 
+-Nama Program
+-Tanggal Program (Bulan tahun)
+- Indikator Program (outcome)
+- Indikaotr Sasaran Program
+- Bidang Yang Melaksanakan
+
+Tabel Kegiatan :
+-Nama Kegiatan
+-Tanggal Kegiatan (Bulan Tahun)
+-Satuan Kegiatan
+-Indikator Sasaran Kegiatan
+
+Tabel Sub Kegiatan :
+-Nama Sub Kegiatan
+- Tanggal Sub Kegiatan (Bulan-tahun)
+- Indikator Sasaran Sub Kegiatan
+- Satuan Sub Kegiatan
+- Rincian Output
+- Pelaksana Sub Kegiatan
+
+
+Charts :
+
+-
+-
+-
+-
