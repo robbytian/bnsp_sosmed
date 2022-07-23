@@ -18,7 +18,7 @@ class UserController extends Controller
     public function beranda()
     {
         $posts = Post::with(['CommentModel' => function ($q) {
-            return $q->orderBy('created_at', 'desc');
+            return $q->orderBy('created_at', 'asc');
         }, 'CommentModel.UserModel', 'CommentModel.UserModel.ProfileModel'])->orderBy('created_at', 'desc')->get();
         return view('beranda.index', compact('posts'));
     }
@@ -47,14 +47,24 @@ class UserController extends Controller
 
         try {
             $user = User::with('ProfileModel')->where('id', Auth::id())->first();
+          
+            $fileName = '';
+            if ($request->hasFile('profile_avatar')) {
+                $image = $request->profile_avatar;
+                $dest = 'img';
+                $fileName = 'img' . '_' . auth()->user()->id . date("YmdHis") . "." . $image->getClientOriginalExtension();
+                $image->move($dest, $fileName);
+            }
             $user->update([
                 'name' => $request->name,
                 'username' => $request->name,
-                'email' => $request->email
+                'email' => $request->email,
+                
             ]);
 
             $user->ProfileModel()->update([
-                'bio' => $request->bio
+                'bio' => $request->bio,
+                'profile_pict'=>$fileName
             ]);
 
             toast('Profile Berhasil diupdate', 'success');

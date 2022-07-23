@@ -60,4 +60,10 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class,'user_id');
     }
 
+    public static function getPicture($id){
+        $user = User::with('ProfileModel')->where('id',$id)->first();
+        $file = $user->ProfileModel->profile_pict != null ? "/img/".$user->ProfileModel->profile_pict : "";
+        return $file;
+    }
+
 }

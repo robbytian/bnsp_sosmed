@@ -14,7 +14,7 @@
             <button type="button" class="btn btn-primary font-weight-bolder mr-2" onclick="document.getElementById('formUpdateProfile').submit();">Save Changes</button>
         </div>
     </div>
-    <form class="form" action="/editProfile" method="POST" id="formUpdateProfile">
+    <form class="form" action="/editProfile" method="POST" id="formUpdateProfile" enctype="multipart/form-data">
         @csrf
         <!--begin::Body-->
         <div class="card-body">
@@ -24,11 +24,12 @@
                     <h5 class="font-weight-bold mb-6">User Info</h5>
                 </div>
             </div>
+
             <div class="form-group row">
                 <label class="col-xl-3 col-lg-3 col-form-label text-right">Photo</label>
                 <div class="col-lg-9 col-xl-6">
-                    <div class="image-input image-input-outline" id="kt_profile_avatar" style="background-image: url(../../../../../theme/demo1/dist/assets/media/users/blank.png)">
-                        <div class="image-input-wrapper" style="background-image: url(../../../../../theme/demo1/dist/assets/media/users/150-11.jpg)"></div>
+                    <div class="image-input image-input-outline" id="kt_profile_avatar" style="background-image: url(/img/blank.png)">
+                        <div class="image-input-wrapper" style="background-image : url(<?php echo \App\Models\User::getPicture(auth()->user()->id)  ?>)"></div>
                         <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
                             <i class="fa fa-pen icon-sm text-muted"></i>
                             <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
@@ -37,9 +38,7 @@
                         <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
                             <i class="ki ki-bold-close icon-xs text-muted"></i>
                         </span>
-                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="Remove avatar">
-                            <i class="ki ki-bold-close icon-xs text-muted"></i>
-                        </span>
+                      
                     </div>
                     <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
                 </div>

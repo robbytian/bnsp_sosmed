@@ -34,7 +34,7 @@
               <!--begin::User-->
               <div class="text-center mb-7">
                 <div class="symbol symbol-60 symbol-circle symbol-xl-90 symbol-primary">
-                  <span class="symbol-label font-weight-bolder font-size-h2">{{auth()->user()->initialName()}}</span>
+                <img alt="Pic" src="{{\App\Models\User::getPicture(Auth::id()) != '' ? \App\Models\User::getPicture(Auth::id()) : '/img/blank.png'}}"/>
                 </div>
                 <h4 class="font-weight-bold my-2">{{Auth::User()->name}}</h4>
                 <div class="text-muted mb-2">{{'@'.Auth::User()->username}}</div>
@@ -180,12 +180,10 @@
 </body>
 
 <script src="../../../theme/demo1/dist/assets/plugins/global/plugins.bundle1036.js?v=2.1.1"></script>
-<script src="../../../theme/demo1/dist/assets/plugins/custom/prismjs/prismjs.bundle1036.js?v=2.1.1"></script>
 <script src="../../../theme/demo1/dist/assets/js/scripts.bundle1036.js?v=2.1.1"></script>
-<script src="../../../theme/demo1/dist/assets/plugins/custom/fullcalendar/fullcalendar.bundle1036.js?v=2.1.1"></script>
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM"></script>
-<script src="../../../theme/demo1/dist/assets/plugins/custom/gmaps/gmaps1036.js?v=2.1.1"></script>
 <script src="../../../theme/demo1/dist/assets/js/pages/widgets1036.js?v=2.1.1"></script>
+<script src="../../..//theme/demo1/dist/assets/js/pages/custom/profile/profile1036.js?v=2.1.1"></script>
+
 @yield('js')
 
 </html>

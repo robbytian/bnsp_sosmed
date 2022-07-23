@@ -5,8 +5,6 @@
 @if(!empty(Auth::User()->id))
 
 @if ($errors->any())
-
-
 <div class="alert alert-custom alert-light-danger fade show mb-5" role="alert">
     <div class="alert-icon"><i class="flaticon-warning"></i></div>
     @foreach ($errors->all() as $error)
@@ -27,7 +25,7 @@
             <!--begin::Pic-->
             <div class="flex-shrink-0 mr-7">
                 <div class="symbol symbol-50 symbol-lg-60 symbol-circle symbol-primary">
-                    <span class="symbol-label font-weight-bolder font-size-h2">{{auth()->user()->initialName()}}</span>
+                    <img alt="Pic" src="{{\App\Models\User::getPicture(Auth::id()) != '' ? \App\Models\User::getPicture(Auth::id()) : '/img/blank.png'}}" />
                 </div>
             </div>
             <div class="flex-grow-1">
@@ -56,6 +54,15 @@
     </div>
 </div>
 @endif
+
+@if(empty(Auth::User()->id) && count($posts) == 0)
+<div class="card card-custom gutter-b">
+    <div class="card-body ">
+        <p class="text-center">Belum terdapat postingan</p>
+    </div>
+</div>
+@endif
+
 @if(count($posts) > 0)
 <div class="card card-custom gutter-b">
     <div class="card-body ">
@@ -64,7 +71,7 @@
             <!--begin::Pic-->
             <div class="flex-shrink-0 mr-7">
                 <div class="symbol symbol-50 symbol-lg-60 symbol-circle symbol-primary">
-                    <span class="symbol-label font-weight-bolder font-size-h2">{{Str::substr($post->UserModel->name,0,1)}}</span>
+                    <img alt="Pic" src="{{\App\Models\User::getPicture($post->user_id) != '' ? \App\Models\User::getPicture($post->user_id) : '/img/blank.png'}}" />
                 </div>
             </div>
             <div class="flex-grow-1">
@@ -125,7 +132,8 @@
                 <!--begin::Pic-->
                 <div class="flex-shrink-0 mr-7">
                     <div class="symbol symbol-50 symbol-lg-40 symbol-circle symbol-primary">
-                        <span class="symbol-label font-weight-bolder font-size-h2">{{Str::substr($comment->UserModel->name,0,1)}}</span>
+                        <img alt="Pic" src="{{\App\Models\User::getPicture($comment->user_id) != '' ? \App\Models\User::getPicture($comment->user_id) : '/img/blank.png'}}" />
+
                     </div>
                 </div>
                 <div class="flex-grow-1">
@@ -332,13 +340,13 @@
     })
 
     $(document).on('click', '.editPost', function() {
-        $('#formEditPost').prop('action',`/post/${$(this).attr('data-id')}`)
+        $('#formEditPost').prop('action', `/post/${$(this).attr('data-id')}`)
         $('#textPost').val($(this).attr('data-text'));
         $('#editPostModal').modal('show');
     })
 
     $(document).on('click', '.editComment', function() {
-        $('#formEditComment').prop('action',`/comment/${$(this).attr('data-id')}`)
+        $('#formEditComment').prop('action', `/comment/${$(this).attr('data-id')}`)
         $('#textComment').val($(this).attr('data-text'));
         $('#editCommentModal').modal('show');
     })
